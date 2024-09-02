@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Portfolio</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+
+		header {
+			background: url('images/fast-green-stream-coding-kjuq7exuta2jv16v.webp') no-repeat center center;
+			background-size: cover;
+			color: white;
+			text-align: center;
+			padding: 5rem 0;
+			position: relative;
+		}
+
+		header h1, header p {
+			position: relative;
+			z-index: 2; /* Ensure text is above the background */
+		}
+
+	</style>
+	<script>
+	
+	document.addEventListener('DOMContentLoaded', function() {
+		emailjs.init("lelG9tNKPVA8BA_bX"); // initialize EmailJS with User ID
+
+		document.getElementById('contact-form').addEventListener('submit', function(event) {
+			event.preventDefault();
+
+			emailjs.sendForm('service_8h4v9ou', 'template_tbqsrgk', this)
+				.then(function(response) {
+					document.getElementById('form-status').innerHTML = '<div class="alert alert-success">Message sent successfully!</div>';
+
+					document.getElementById('contact-form').reset();
+				}, function(error) {
+					document.getElementById('form-status').innerHTML = '<div class="alert alert-danger">Message could not be sent. Please try again later.</div>';
+				});
+		});
+	});
+	</script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">Retro Portfolio - Kevin Abrahams</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#portfolio">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Welcome to My Retro Portfolio</h1>
+        <p>Showcasing my work with a classic touch.</p>
+    </header>
+	
+	<section id="about" class="py-5 bg-dark text-white">
+    <div class="container">
+        <h2 class="text-center">About Me</h2>
+        <p class="text-center">Greetings. I am Kevin Abrahams, a passionate software engineer with a love for design and problem solving. My skills include software development with various technologies.</p>
+		<div class="text-center mt-4">
+			<a href="assets/Kevin_Abrahams_Resume.pdf" class="btn btn-primary" download>Download Resume</a>
+		</div>
+	</div>
+    </section>
+	
+    <section id="portfolio" class="py-5">
+        <div class="container">
+            <h2 class="text-center">My Portfolio</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Project 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Project 1</h5>
+                            <p class="card-text">A description of the first project. It showcases my skills in design and development.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="images/react-weather-api.png" class="card-img-top" alt="Project 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Weather APP</h5>
+                            <p class="card-text">This web-app utilizes front-end technologies to display real-time weather data by locale.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="images/react-calculator.png" class="card-img-top" alt="Project 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Calculator</h5>
+                            <p class="card-text">This calculator web-app enables users to perform basic calculations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+	<section id="contact" class="py-5 bg-dark text-white">
+		<div class="container">
+			<h2 class="text-center">Contact Me</h2>
+			<form id="contact-form">
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="name">Name</label>
+						<input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="email">Email</label>
+						<input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="message">Message</label>
+					<textarea class="form-control" id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
+				</div>
+				<button type="submit" class="btn btn-primary">Send Message</button>
+				<div id="form-status" class="mt-3"></div>
+			</form>
+		</div>
+	</section>
+	
+    <footer class="text-center py-3 bg-dark text-white">
+        <p>&copy; 2024 Retro Portfolio. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+</body>
+</html>

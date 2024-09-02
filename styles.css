@@ -1,0 +1,32 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    color: #333;
+}
+
+header {
+    background: url('https://gifdb.com/images/high/fast-green-stream-coding-kjuq7exuta2jv16v.webp') no-repeat center center;
+    background-size: cover;
+    color: green;
+    text-align: center;
+    padding: 5rem 0;
+    position: relative;
+}
+
+header h1, header p {
+    position: relative;
+    z-index: 2; /* Ensure text is above the background */
+}
+
+section {
+    padding: 2rem 0;
+}
+
+.card {
+    border: 2px solid #ddd;
+    border-radius: 0;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+}
