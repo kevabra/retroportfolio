@@ -98,6 +98,18 @@
 					behavior: 'smooth'
 				});
 			}, 1000); // The scroll timeout (1 sec)
+			
+            // Automatic scroll t contact form
+			setTimeout(() => {
+				const target = document.querySelector('#contact');
+				const offsetPercentage = 0.1; // 10% offset
+				const offset = window.innerHeight * offsetPercentage;
+
+				window.scrollTo({
+					top: target.getBoundingClientRect().top + window.pageYOffset - offset,
+					behavior: 'smooth'
+				});
+			}, 4000); // The scroll timeout (1 sec)
 			});
     </script>
 </head>
