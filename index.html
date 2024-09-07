@@ -7,93 +7,27 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
     <style>
-	
-		@media screen and (min-width: 1000px) {
-			/* Full-screen welcome section */
-			header {
-				background: url('images/fast-green-stream-coding-kjuq7exuta2jv16v.webp') no-repeat center center;
-				background-size: cover;
-				color: white;
-				text-align: center;
-				height: 100vh; /* Full viewport height */
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				flex-direction: column;
-				position: relative;
-			}
-
-			header h1, header p {
-				position: relative;
-				z-index: 2; /* Ensure text is above the background */
-			}
-
-			/* Portfolio section */
-			#portfolio {
-				background: url('images/fast-green-stream-coding-kjuq7exuta2jv16v.webp') no-repeat center center;
-				background-size: cover;
-				color: white;
-				text-align: center;
-				padding: 5rem 0;
-				position: relative;
-			}
-
-			/* Smooth scrolling for the entire page */
-			html {
-				scroll-behavior: smooth;
-			}
-
-			/* Section sliding animation */
-			section {
-				opacity: 0;
-				transform: translateY(50px);
-				transition: all 0.7s ease-in-out;
-			}
-
-			section.active {
-				opacity: 1;
-				transform: translateY(0);
-			}
+		header {
+			background: url('images/fast-green-stream-coding-kjuq7exuta2jv16v.webp') no-repeat center center;
+			background-size: cover;
+			color: white;
+			text-align: center;
+			padding: 5rem 0;
+			position: relative;
 		}
-		
 
-		@media screen and (max-width: 1000px) {
-			header {
-				background: url('images/fast-green-stream-coding-kjuq7exuta2jv16v.webp') no-repeat center center;
-				background-size: cover;
-				color: white;
-				text-align: center;
-				padding: 5rem 0;
-				position: relative;
-				vertical-align: -10vh;
-			}
-
-			header h1, header p {
-			    padding-top: 2vh;
-				position: relative;
-				z-index: 2; /* Ensure text is above the background */
-			}
+		header h1, header p {
+			position: relative;
+			z-index: 2; /* Ensure text is above the background */
+		}
 			
-			#portfolio {
-				background: url('images/fast-green-stream-coding-kjuq7exuta2jv16v.webp') no-repeat center center;
-				background-size: cover;
-				color: white;
-				text-align: center;
-				padding: 5rem 0;
-				position: relative;
-			}
-			
-			/* Section sliding animation */
-			#portfolio, #contact {
-				opacity: 0;
-				transform: translateY(50px);
-				transition: all 0.7s ease-in-out;
-			}
-
-			#portfolio.active, #contact.active {
-				opacity: 1;
-				transform: translateY(0);
-			}
+		#portfolio {
+			background: url('images/fast-green-stream-coding-kjuq7exuta2jv16v.webp') no-repeat center center;
+			background-size: cover;
+			color: white;
+			text-align: center;
+			padding: 5rem 0;
+			position: relative;
 		}
     </style>
     <script>
@@ -112,51 +46,7 @@
                         document.getElementById('form-status').innerHTML = '<div class="alert alert-danger">Message could not be sent. Please try again later.</div>';
                     });
             });
-
-            // Function to handle scrolling and add class for animation
-            function revealSections() {
-                const sections = document.querySelectorAll('section');
-                const windowHeight = window.innerHeight;
-
-                sections.forEach(section => {
-                    const sectionTop = section.getBoundingClientRect().top;
-
-                    if (sectionTop < windowHeight - 100) {
-                        section.classList.add('active');
-                    }
-                });
-            }
-
-            // Listen to scroll event
-            window.addEventListener('scroll', revealSections);
-
-            // Automatic scroll from welcome section to about section
-			
-			if (window.outerWidth > 1000) {
-				setTimeout(() => {
-					const target = document.querySelector('#about');
-					const offsetPercentage = 0.1; // 10% offset
-					const offset = window.innerHeight * offsetPercentage;
-
-					window.scrollTo({
-						top: target.getBoundingClientRect().top + window.pageYOffset - offset,
-						behavior: 'smooth'
-					});
-				}, 1000); // The scroll timeout (1 sec)
-				
-				// Automatic scroll t contact form
-				setTimeout(() => {
-					const target = document.querySelector('#contact');
-					const offsetPercentage = 0.1; // 10% offset
-					const offset = window.innerHeight * offsetPercentage;
-
-					window.scrollTo({
-						top: target.getBoundingClientRect().top + window.pageYOffset - offset,
-						behavior: 'smooth'
-					});
-				}, 4000); // The scroll timeout (1 sec)
-			}
-			});
+		});
     </script>
 </head>
 <body>
@@ -179,7 +69,6 @@
             </ul>
         </div>
     </nav>
-
 	<header>
 			<h1>Welcome to My Retro Portfolio</h1>
 			<p>Showcasing my work with a classic touch.</p>
