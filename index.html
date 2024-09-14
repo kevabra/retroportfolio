@@ -29,6 +29,116 @@
 			padding: 5rem 0;
 			position: relative;
 		}
+		
+				
+		.flip-card {
+			perspective: 1000px; /* Required for 3D flip effect */
+			width: 100%; /* Ensure the card takes the full width of its container */
+			height: 400px; /* Set a fixed height for the card */
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: transparent;
+			border-color: transparent;
+		}
+
+		/* Responsive height adjustments for smaller screens */
+		@media (max-width: 1200px) {
+			.flip-card {
+				height: 400px;
+			}
+		}
+
+		@media (max-width: 992px) {
+			.flip-card {
+				height: 350px;
+			}
+		}
+
+		@media (max-width: 768px) {
+			.flip-card {
+				height: 370px;
+			}
+		}
+
+		@media (max-width: 576px) {
+			.flip-card {
+				height: 400px;
+			}
+		}
+
+		.flip-card-inner {
+			position: absolute; /* Ensure it occupies the full size of the flip card */
+			width: 100%;
+			height: 100%;
+			display: flex;
+			transition: transform 0.6s;
+			transform-style: preserve-3d;
+		}
+
+		.flip-card-front {
+			position: absolute; /* Position absolutely within the flip-card-inner */
+			width: 100%; /* Full width of the flip card */
+			height: 100%; /* Full height of the flip card */
+			backface-visibility: hidden;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.flip-card-back {
+			position: absolute; /* Position absolutely within the flip-card-inner */
+			width: 100%; /* Full width of the flip card */
+			height: 100%; /* Full height of the flip card */
+			backface-visibility: hidden;
+			display: flex;
+		}
+
+
+		.flip-card-front {
+			transform: rotateY(0deg);
+			background-color: white; /* Background color for the front */
+			color: black;
+		}
+
+		.flip-card-back {
+			transform: rotateY(180deg);
+			background-color: #000; /* Dark background for the back */
+			color: white;
+		}
+
+		.flip-card.flipped .flip-card-inner {
+			transform: rotateY(180deg);
+		}
+
+		.flip-card.flipped .flip-card-front {
+			display: none; /* Hide front face when flipped */
+		}
+
+		.flip-card.flipped .flip-card-back {
+			display: flex; /* Show back face when flipped */
+		}
+
+		.flip-btn {
+			position: absolute; /* Position absolutely within the flip-card */
+			bottom: 0px; /* Position it at the bottom of the card */
+			left: 50%; /* Center horizontally */
+			transform: translateX(-50%); /* Center horizontally */
+			z-index: 3; /* Ensure it is above other elements */
+		}
+		/* Retro Button Styles */
+		.btn-retro {
+			border: 2px solid black;
+			color: white;
+			font-family: 'Courier New', Courier, monospace;
+			text-transform: uppercase;
+			transition: background-color 0.3s, color 0.3s;
+		}
+
+		.btn-retro:hover {
+			color: lightgray;
+		}
+
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -46,6 +156,15 @@
                         document.getElementById('form-status').innerHTML = '<div class="alert alert-danger">Message could not be sent. Please try again later.</div>';
                     });
             });
+			
+			const flipButtons = document.querySelectorAll('.flip-btn');
+
+			flipButtons.forEach(function(button) {
+				button.addEventListener('click', function () {
+					const card = button.closest('.flip-card');
+					card.classList.toggle('flipped');
+				});
+			});
 		});
     </script>
 </head>
@@ -83,58 +202,122 @@
             </div>
         </div>
     </section>
+	<section id="portfolio" class="py-5">
+		<div class="container">
+			<h2 class="text-center">My Portfolio</h2>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="card flip-card mb-4">
+						<div class="flip-card-inner">
+							<!-- Front Side -->
+							<div class="flip-card-front card">
+								<div class="card-body">
+									<img src="images/retro-blog-site-mern.png" class="card-img-top" alt="Project 1">
+									<h5 class="card-title"><a href="https://kvretroblog.vercel.app/" target="_blank">Retro Blog Site</a></h5>
+									<p class="card-text">This full-stack CRUD blog app (mern) allows users to register and login to post/view blogs.</p>
+								</div>
+								<button class="flip-btn">Flip</button>
+							</div>
+							<!-- Back Side -->
+							<div class="flip-card-back card">
+								<div class="card-body" style="text-align: left;">
+									<ul><li><strong>Features: </strong>
+									User authentication, blog creation, real-time updates, CRUD operations (create/view/edit/delete blog posts), like system.</li>
+									
+									<li><strong>Skills: </strong>
+									React, Node.js, MongoDB, Express, Bootstrap</li>
+									</ul>
+								</div>
+								<button class="flip-btn">Flip</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card flip-card mb-4">
+						<div class="flip-card-inner">
+							<!-- Front Side -->
+							<div class="flip-card-front card">
+								<div class="card-body">
+									<img src="images/react-weather-api.png" class="card-img-top" alt="Project 2">
+									<h5 class="card-title"><a href="https://kevabra-react-weather-api.vercel.app/" target="_blank">Weather APP</a></h5>
+									<p class="card-text">This web-app utilizes front-end technologies to display real-time weather data by locale.</p>
+								</div>
+								<button class="flip-btn">Flip</button>
+							</div>
+							<!-- Back Side -->
+							<div class="flip-card-back card">
+								<div class="card-body" style="text-align: left;">
+									<ul><li><strong>Features: </strong>
+									Real-time data, Aesthetic, Dynamic</li>
+									
+									<li><strong>Skills: </strong>
+									React, RESTFUL API, JS, HTML, CSS</li>
+									</ul>
+								</div>
+								<button class="flip-btn">Flip</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card flip-card mb-4">
+						<div class="flip-card-inner">
+							<!-- Front Side -->
+							<div class="flip-card-front card">
+								<div class="card-body">
+									<img src="images/moodu.png" class="card-img-top" alt="Project 3">
+									<h5 class="card-title"><a href="https://moodu.vercel.app/" target="_blank">MoodU</a></h5>
+									<p class="card-text">Mini social mood tracker app (MERN) that allows users to post latest mood and view others'.</p>
+								</div>
+								<button class="flip-btn">Flip</button>
+							</div>
+							<!-- Back Side -->
+							<div class="flip-card-back card">
+								<div class="card-body" style="text-align: left;">
+									<ul><li><strong>Features: </strong>
+									User authentication, Intricate API Design, Interactive/Interpersonal element, Settings feature, Friend Request System.</li>
+									
+									<li><strong>Skills: </strong>
+									React, Node.js, MongoDB, Express, Bootstrap</li>
+									</ul>
+								</div>
+								<button class="flip-btn">Flip</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card flip-card mb-4">
+						<div class="flip-card-inner">
+							<!-- Front Side -->
+							<div class="flip-card-front card">
+								<div class="card-body">
+									<img src="images/web-tetris.png" class="card-img-top" alt="Project 4">
+									<h5 class="card-title"><a href="https://web-tetris-tan.vercel.app/" target="_blank">Web Tetris</a></h5>
+									<p class="card-text">Old-school full stack web tetris game leveraging backend mongodb express node server with a frontend leveraging vanilla HTML, CSS, and JS.</p>
+								</div>
+								<button class="flip-btn">Flip</button>
+							</div>
+							<!-- Back Side -->
+							<div class="flip-card-back card">
+								<div class="card-body" style="text-align: left;">
+									<ul><li><strong>Features: </strong>
+									User registration, login, global leaderboard, game history, high score</li>
+									
+									<li><strong>Skills: </strong>
+									Node.js, MongoDB, Express, API Design, 2D Game Dev (web), HTML, CSS, JS</li>
+									</ul>
+								</div>
+								<button class="flip-btn">Flip</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-    <section id="portfolio" class="py-5">
-        <div class="container">
-            <h2 class="text-center">My Portfolio</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <a href="https://kvretroblog.vercel.app/" target="_blank">
-                            <div class="card-body">
-                                <img src="images/retro-blog-site-mern.png" class="card-img-top" alt="Project 1">
-                                <h5 class="card-title">Retro Blog Site</h5>
-                                <p class="card-text">This full-stack CRUD blog app (mern) allows users to register and login to post/view blogs.</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <a href="https://kevabra-react-weather-api.vercel.app/" target="_blank">
-                            <img src="images/react-weather-api.png" class="card-img-top" alt="Project 2">
-                            <div class="card-body">
-                                <h5 class="card-title">Weather APP</h5>
-                                <p class="card-text">This web-app utilizes front-end technologies to display real-time weather data by locale.</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <a href="https://moodu.vercel.app/" target="_blank">
-                            <img src="images/moodu.png" class="card-img-top" alt="Project 3">
-                            <div class="card-body">
-                                <h5 class="card-title">MoodU</h5>
-                                <p class="card-text">Mini social mood tracker app (MERN) that allows users to post latest mood and view others'.</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <a href="https://web-tetris-tan.vercel.app/" target="_blank">
-                            <img src="images/web-tetris.png" class="card-img-top" alt="Project 4">
-                            <div class="card-body">
-                                <h5 class="card-title">Web Tetris</h5>
-                                <p class="card-text">Old-school full stack web tetris game leveraging backend mongodb express node server with a frontend leveraging vanilla HTML, CSS, and JS.</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <section id="contact" class="py-5 bg-dark text-white">
         <div class="container">
